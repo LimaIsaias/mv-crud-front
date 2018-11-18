@@ -1,13 +1,21 @@
-//import { CoreModule } from './../core/core.module';
 import { NgModule } from '@angular/core';
-
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { PessoaRoutingModule } from './pessoa-routing.module';
-import { ListagemPessoasComponent } from '../listagem-pessoas/listagem-pessoas.component';
+import { ListagemPessoasComponent } from './listagem-pessoas/listagem-pessoas.component';
+import { InputTextModule } from 'primeng/components/inputtext/inputtext';
+import { ButtonModule } from 'primeng/components/button/button';
+import { TableModule } from 'primeng/components/table/table';
+
 
 @NgModule({
   imports: [
-    PessoaRoutingModule
+    InputTextModule,
+    ButtonModule,
+    TableModule,
+    PessoaRoutingModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   declarations: [ListagemPessoasComponent]
 })

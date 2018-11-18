@@ -1,9 +1,9 @@
 import { Component, Input, NgZone, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
-import { Pessoa } from '../models/pessoa';
-import { Page } from '../models/page';
-import { PessoaService, PessoaFiltro } from '../pessoa/pessoa.service';
+import { Pessoa } from 'src/app/models/pessoa';
+import { Page } from 'src/app/models/page';
+import { PessoaService, PessoaFiltro } from '../pessoa.service';
 
 
 @Component({
@@ -12,10 +12,10 @@ import { PessoaService, PessoaFiltro } from '../pessoa/pessoa.service';
   styleUrls: ['./listagem-pessoas.component.css']
 })
 export class ListagemPessoasComponent implements OnInit {
-  title = 'Listagem de Pessoas';
-  pessoas = [];
   pessoaForm: FormGroup;
+  title = 'Listagem de Pessoas';
   closeResult: string;
+  pessoas: Pessoa[];
   page: Page<Pessoa> = new Page();
   pessoaSelecionada: Pessoa;
 
@@ -35,8 +35,20 @@ export class ListagemPessoasComponent implements OnInit {
       cpf: ['', [this.numberPattern, Validators.minLength(11), Validators.maxLength(11)]]
     });
     this.currentPage = 1;
-  } ngOnInit() { }
+  } ngOnInit() {
+    if (this.route.snapshot.params && this.route.snapshot.params.searchAll) {
+      this.pesquisar();
+    } else if (this.route.snapshot.params
+      && this.route.snapshot.params.nome
+      && this.route.snapshot.params.cpf
+    ) {
+      this.pessoaForm.get('nome').setValue(this.route.snapshot.params.nome);
+      this.pessoaForm.get('cpf').setValue(this.route.snapshot.params.cpf);
+      this.pesquisar();
+    }
+  }
   pesquisar(numeroPagina?: number) {
+    console.log('teste');
     const pessoaFiltro: PessoaFiltro = this.pessoaForm.value;
     if (numeroPagina) {
       pessoaFiltro.pagina = numeroPagina - 1;
@@ -48,18 +60,16 @@ export class ListagemPessoasComponent implements OnInit {
     this.pessoaService.pesquisar(pessoaFiltro)
       .subscribe((data) => {
         this.page = data;
+        this.pessoas = data.content;
       });
   }
 
   remover(pessoa: Pessoa): void {
+   console.log(pessoa);
     this.zone.run(() => {
       this.pessoaService.remover(pessoa.id)
         .subscribe(() => this.pesquisar());
     });
-  }
-  open(content, pessoa: Pessoa) {
-    this.pessoaSelecionada = pessoa;
-    //    this.modalService.open(content);
   }
 
 }

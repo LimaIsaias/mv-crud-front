@@ -6,18 +6,18 @@
     </div>
 
     <div class="ui-g-12">
-      <form  autocomplete="off" (ngSubmit)="pesquisar()" >
+      <form [formGroup]="pessoaForm">
         <div class="ui-g-4 ui-fluid">
           <label>Nome</label>
-          <input type="text" pInputText [(ngModel)]="filtro.nome"/>
+          <input pInputText type="text" class="form-control" placeholder="Nome" formControlName="nome">
         </div>
         <div class="ui-g-4 ui-fluid">
           <label>CPF</label>
-          <input type="text" pInputText [(ngModel)]="filtro.cpf" />
+          <input pInputText type="text" class="form-control" placeholder="CPF" formControlName="cpf">
         </div>
         <div class="ui-g-2 ui-fluid">
           &nbsp;
-          <button pButton type="submit" label="Pesquisar" (click)="pesquisar('1')" ></button>
+          <button pButton type="submit" label="Pesquisar" (click)="pesquisar('1')"></button>
         </div>
         <div class="ui-g-2 ui-fluid">
           &nbsp;
@@ -42,24 +42,24 @@
           </tr>
         </ng-template>
         <ng-template pTemplate="body" let-pessoa>
-          <tr>
+          <tr >
             <td class="col-id">{{pessoa.id}}</td>
             <td class="col-nome">{{pessoa.nome}}</td>
             <td class="col-email">{{pessoa.email}}</td>
             <td class="col-cpf">{{pessoa.cpf}}</td>
             <td class="col-idade">{{pessoa.idade}}</td>
-            <td class="col-telefone">{{pessoa.quantidadeTelefones}}</td>
+            <td class="col-telefone">{{pessoa.qtdTels}}</td>
             <td class="col-acoes">
               <button pButton icon="pi pi-pencil" pTooltip="Editar" tooltipPosition="top"></button>
               &nbsp;
-              <button pButton icon="pi pi-trash" pTooltip="Excluir" tooltipPosition="top"></button>
+              <button pButton icon="pi pi-trash" pTooltip="Excluir" tooltipPosition="top" (click)="remover(pessoa)"></button>
             </td>
           </tr>
         </ng-template>
         <ng-template pTemplate="emptymessage">
           <tr>
-            <td colspan="6">
-              Nenhum lançamento encontrado
+            <td colspan="7">
+              Nenhum Registro Encontrado!
             </td>
           </tr>
         </ng-template>

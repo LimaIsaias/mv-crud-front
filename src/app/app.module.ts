@@ -4,24 +4,26 @@ import { AppComponent } from './app.component';
 import { InputTextModule } from 'primeng/components/inputtext/inputtext';
 import { ButtonModule } from 'primeng/components/button/button';
 import { TableModule } from 'primeng/components/table/table';
-import { ListagemPessoasComponent } from './listagem-pessoas/listagem-pessoas.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { PessoaService } from './pessoa/pessoa.service';
+import { PaginaNaoEncontradaComponent } from './pagina-nao-encontrada/pagina-nao-encontrada.component';
+import { HttpClientModule } from '@angular/common/http';
+import { AppRoutingModule } from './app-routing.module';
+import { environment } from '../environments/environment';
+import { PessoaModule } from './pessoa/pessoa.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ListagemPessoasComponent
+    PaginaNaoEncontradaComponent,
   ],
   imports: [
     BrowserModule,
-    InputTextModule,
-    ButtonModule,
-    TableModule,
-    FormsModule,
-    ReactiveFormsModule
-
+    AppRoutingModule,
+    HttpClientModule,
+    PessoaModule
   ],
-  providers: [],
+  providers: [PessoaService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
