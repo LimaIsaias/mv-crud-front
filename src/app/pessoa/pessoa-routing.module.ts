@@ -4,6 +4,7 @@ import { ListagemPessoasComponent } from './listagem-pessoas/listagem-pessoas.co
 
 const pessoaRoutes: Routes = [
   { path: 'pessoa', component: ListagemPessoasComponent },
+  {path: '', redirectTo: '/pessoa', pathMatch: 'full'}
 ];
 
 @NgModule({
