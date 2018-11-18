@@ -5,19 +5,20 @@ import { InputTextModule } from 'primeng/components/inputtext/inputtext';
 import { ButtonModule } from 'primeng/components/button/button';
 import { TableModule } from 'primeng/components/table/table';
 import { ListagemPessoasComponent } from './listagem-pessoas/listagem-pessoas.component';
-import { NavbarComponent } from './navbar/navbar.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ListagemPessoasComponent,
-    NavbarComponent,
+    ListagemPessoasComponent
   ],
   imports: [
     BrowserModule,
     InputTextModule,
     ButtonModule,
-    TableModule
+    TableModule,
+    FormsModule,
+    ReactiveFormsModule
 
   ],
   providers: [],

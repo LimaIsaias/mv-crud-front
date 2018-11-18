@@ -6,22 +6,24 @@
     </div>
 
     <div class="ui-g-12">
-      <div class="ui-g-4 ui-fluid">
-        <label>Nome</label>
-        <input type="text" pInputText />
-      </div>
-      <div class="ui-g-4 ui-fluid">
-        <label>CPF</label>
-        <input type="text" pInputText />
-      </div>
-      <div class="ui-g-2 ui-fluid">
-        &nbsp;
-        <button pButton type="submit" label="Pesquisar"></button>
-      </div>
-      <div class="ui-g-2 ui-fluid">
-        &nbsp;
-        <button pButton type="submit" label="Cadastrar"></button>
-      </div>
+      <form  autocomplete="off" (ngSubmit)="pesquisar()" >
+        <div class="ui-g-4 ui-fluid">
+          <label>Nome</label>
+          <input type="text" pInputText [(ngModel)]="filtro.nome"/>
+        </div>
+        <div class="ui-g-4 ui-fluid">
+          <label>CPF</label>
+          <input type="text" pInputText [(ngModel)]="filtro.cpf" />
+        </div>
+        <div class="ui-g-2 ui-fluid">
+          &nbsp;
+          <button pButton type="submit" label="Pesquisar" (click)="pesquisar('1')" ></button>
+        </div>
+        <div class="ui-g-2 ui-fluid">
+          &nbsp;
+          <button pButton type="button" label="Cadastrar"></button>
+        </div>
+      </form>
     </div>
   </div>
   <!--table-->
