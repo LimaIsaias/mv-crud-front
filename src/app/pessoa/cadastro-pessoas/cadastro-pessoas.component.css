@@ -1,0 +1,66 @@
+.col-id {
+  width: 50px;
+  text-align: center;
+}
+.col-id-header {
+  width: 50px;
+}
+
+.col-nome {
+  width: 200px;
+  text-align: left;
+}
+.col-nome-header {
+  width: 200px;
+}
+
+.col-email {
+  width: 180px;
+  text-align: left;
+}
+.col-email-header {
+  width: 180px;
+}
+
+.col-telefone {
+  width: 100px;
+  text-align: center;
+}
+.col-telefone-header {
+  width: 100px;
+}
+
+.col-idade {
+  width: 50px;
+  text-align: center;
+}
+
+.col-idade-header {
+  width: 50px;
+}
+
+.col-cpf {
+  width: 100px;
+  text-align: center;
+}
+
+.col-cpf-header {
+  width: 100px;
+}
+
+.col-valor {
+  width: 120px;
+  text-align: right;
+}
+
+.col-valor-header {
+  width: 120px;
+}
+
+.col-acoes {
+  width: 80px;
+  text-align: center;
+}
+.col-acoes-header {
+  width: 80px;
+}

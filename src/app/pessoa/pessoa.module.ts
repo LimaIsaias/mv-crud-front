@@ -6,6 +6,8 @@ import { ListagemPessoasComponent } from './listagem-pessoas/listagem-pessoas.co
 import { InputTextModule } from 'primeng/components/inputtext/inputtext';
 import { ButtonModule } from 'primeng/components/button/button';
 import { TableModule } from 'primeng/components/table/table';
+import { CadastroPessoasComponent } from './cadastro-pessoas/cadastro-pessoas.component';
+import { CalendarModule } from 'primeng/calendar';
 
 
 @NgModule({
@@ -15,8 +17,13 @@ import { TableModule } from 'primeng/components/table/table';
     TableModule,
     PessoaRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    CalendarModule,
+    InputTextModule,
+    FormsModule,
+    ReactiveFormsModule,
+    TableModule
   ],
-  declarations: [ListagemPessoasComponent]
+  declarations: [ListagemPessoasComponent, CadastroPessoasComponent]
 })
 export class PessoaModule { }

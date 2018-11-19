@@ -1,15 +1,11 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
-import { InputTextModule } from 'primeng/components/inputtext/inputtext';
-import { ButtonModule } from 'primeng/components/button/button';
-import { TableModule } from 'primeng/components/table/table';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PessoaService } from './pessoa/pessoa.service';
 import { PaginaNaoEncontradaComponent } from './pagina-nao-encontrada/pagina-nao-encontrada.component';
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
-import { environment } from '../environments/environment';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { PessoaModule } from './pessoa/pessoa.module';
 
 @NgModule({
@@ -21,7 +17,8 @@ import { PessoaModule } from './pessoa/pessoa.module';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    PessoaModule
+    PessoaModule,
+    BrowserAnimationsModule
   ],
   providers: [PessoaService],
   bootstrap: [AppComponent]

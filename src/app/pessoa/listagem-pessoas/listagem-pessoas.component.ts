@@ -26,7 +26,6 @@ export class ListagemPessoasComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private pessoaService: PessoaService,
-    // private modalService: NgbModal,
     private route: ActivatedRoute,
     private zone: NgZone
   ) {

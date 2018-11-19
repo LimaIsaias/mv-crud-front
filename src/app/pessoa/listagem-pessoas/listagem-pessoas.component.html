@@ -21,7 +21,7 @@
         </div>
         <div class="ui-g-2 ui-fluid">
           &nbsp;
-          <button pButton type="button" label="Cadastrar"></button>
+          <button pButton type="button" label="Cadastrar" routerLink="/pessoa/novo"></button>
         </div>
       </form>
     </div>
@@ -42,7 +42,7 @@
           </tr>
         </ng-template>
         <ng-template pTemplate="body" let-pessoa>
-          <tr >
+          <tr>
             <td class="col-id">{{pessoa.id}}</td>
             <td class="col-nome">{{pessoa.nome}}</td>
             <td class="col-email">{{pessoa.email}}</td>
@@ -50,7 +50,7 @@
             <td class="col-idade">{{pessoa.idade}}</td>
             <td class="col-telefone">{{pessoa.qtdTels}}</td>
             <td class="col-acoes">
-              <button pButton icon="pi pi-pencil" pTooltip="Editar" tooltipPosition="top"></button>
+              <button pButton icon="pi pi-pencil" pTooltip="Editar" tooltipPosition="top" [routerLink]="['/pessoa', pessoa.id]"></button>
               &nbsp;
               <button pButton icon="pi pi-trash" pTooltip="Excluir" tooltipPosition="top" (click)="remover(pessoa)"></button>
             </td>
