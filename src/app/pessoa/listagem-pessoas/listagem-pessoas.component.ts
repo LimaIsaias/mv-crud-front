@@ -47,7 +47,6 @@ export class ListagemPessoasComponent implements OnInit {
     }
   }
   pesquisar(numeroPagina?: number) {
-    console.log('teste');
     const pessoaFiltro: PessoaFiltro = this.pessoaForm.value;
     if (numeroPagina) {
       pessoaFiltro.pagina = numeroPagina - 1;
@@ -55,7 +54,7 @@ export class ListagemPessoasComponent implements OnInit {
     } else {
       pessoaFiltro.pagina = this.currentPage - 1;
     }
-    pessoaFiltro.itensPorPagina = 20;
+    pessoaFiltro.itensPorPagina = 5;
     this.pessoaService.pesquisar(pessoaFiltro)
       .subscribe((data) => {
         this.page = data;
@@ -64,7 +63,6 @@ export class ListagemPessoasComponent implements OnInit {
   }
 
   remover(pessoa: Pessoa): void {
-   console.log(pessoa);
     this.zone.run(() => {
       this.pessoaService.remover(pessoa.id)
         .subscribe(() => this.pesquisar());

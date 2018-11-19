@@ -38,7 +38,6 @@ export class PessoaService {
     if (pessoaFiltro.cpf) {
       params = params.set('cpf', pessoaFiltro.cpf);
     }
-    console.log(pessoaFiltro);
     return this.http.get<Page<Pessoa>>(`${this.pessoaUrl}`, { params })
       .pipe(map(data => data));
   }

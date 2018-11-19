@@ -62,10 +62,12 @@ export class CadastroPessoasComponent implements OnInit {
   salvar() {
     const pessoa: Pessoa = this.pessoaCadForm.value;
     pessoa.telefones = this.pessoaSelecionada.telefones;
+    console.log(this.pessoaSelecionada);
     pessoa.dataNascimento = this.getDateNascimentoFromComponent();
+    console.log(pessoa);
     return this.pessoaService.salvar(pessoa)
       .subscribe(pessoaSalva => {
-        this.router.navigate(['/pessoa', { 'nome': pessoaSalva.nome, 'cpf': pessoaSalva.cpf }]);
+        this.router.navigate(['/pessoa']);
         return pessoaSalva;
       });
   }
@@ -75,9 +77,10 @@ export class CadastroPessoasComponent implements OnInit {
     pessoa.telefones = this.pessoaSelecionada.telefones;
     pessoa.id = this.pessoaSelecionada.id;
     pessoa.dataNascimento = this.getDateNascimentoFromComponent();
+    console.log(pessoa);
     this.pessoaService.atualizar(pessoa)
       .subscribe((pessoaAtualizada) => {
-        this.router.navigate(['/pessoa', { 'nome': pessoaAtualizada.nome, 'cpf': pessoaAtualizada.cpf }]);
+        this.router.navigate(['/pessoa']);
       });
   }
 
@@ -85,15 +88,12 @@ export class CadastroPessoasComponent implements OnInit {
     if (this.pessoaSelecionada) {
       const telefone: Telefone = this.telefonesForm.value;
       this.pessoaSelecionada.telefones.push(telefone);
-      // this.telefones.push(telefone);
     }
   }
 
   removerTelefone(telefone: Telefone) {
-    console.log(telefone);
     const index = this.telefones.indexOf(telefone);
-    this.telefones.splice(index, 1);
-    this.pessoaSelecionada.telefones.splice(index, 1);
+    this.pessoaSelecionada.telefones.slice(index, 1);
   }
 
   limparForms() {
@@ -109,7 +109,6 @@ export class CadastroPessoasComponent implements OnInit {
     this.pessoaService.pesquisarPorId(id)
       .subscribe((p) => {
         const data = new Date(p.dataNascimento);
-
         this.pessoaCadForm.get('nome').setValue(p.nome);
         this.pessoaCadForm.get('cpf').setValue(p.cpf);
         this.pessoaCadForm.get('email').setValue(p.email);
@@ -118,7 +117,6 @@ export class CadastroPessoasComponent implements OnInit {
           data.getMonth(),
           data.getDay())
         );
-
         if (!this.pessoaSelecionada) {
           this.pessoaSelecionada = new Pessoa();
         }

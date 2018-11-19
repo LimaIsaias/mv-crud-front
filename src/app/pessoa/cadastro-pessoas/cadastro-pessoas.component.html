@@ -23,7 +23,7 @@
                     </div>
                     <div class="ui-g-3 ui-fluid">
                         <label>Data nascimento</label>
-                        <p-calendar formControlName="dataNascimento"></p-calendar>
+                        <p-calendar dateFormat="dd/mm/yy"  formControlName="dataNascimento" [monthNavigator]="true" [yearNavigator]="true" yearRange="2000:2018"></p-calendar>
                     </div>
                 </div>
             </form>
@@ -51,7 +51,7 @@
         </form>
         <div class="ui-g-9">
             <!--Table-->
-            <p-table [value]="telefones" [paginator]="true" [rows]="3" [responsive]="true">
+            <p-table [value]="pessoaSelecionada.telefones" [paginator]="true" [rows]="3" [responsive]="true">
                 <ng-template pTemplate="header">
                     <tr>
                         <th class="col-id-header">ID</th>
