@@ -13,7 +13,8 @@
                     </div>
                     <div class="ui-g-3 ui-fluid">
                         <label>CPF</label>
-                        <input pInputText type="text" class="form-control" placeholder="CPF" formControlName="cpf">
+                        <input pInputText type="text" pKeyFilter="int" class="form-control" placeholder="CPF"
+                            formControlName="cpf">
                     </div>
                 </div>
                 <div class="ui-g-12 ">
@@ -22,8 +23,9 @@
                         <input pInputText type="email" class="form-control" placeholder="Email" formControlName="email">
                     </div>
                     <div class="ui-g-3 ui-fluid">
-                        <label>Data nascimento</label>
-                        <p-calendar dateFormat="dd/mm/yy"  formControlName="dataNascimento" [monthNavigator]="true" [yearNavigator]="true" yearRange="2000:2018"></p-calendar>
+                        <label>Data Nascimento</label>
+                        <p-calendar dateFormat="dd/mm/yy" formControlName="dataNascimento" [monthNavigator]="true"
+                            [yearNavigator]="true" yearRange="1900:2018"></p-calendar>
                     </div>
                 </div>
             </form>
@@ -38,11 +40,12 @@
         <form [formGroup]="telefonesForm">
             <div class="ui-g-2 ui-fluid">
                 <label>DDD</label>
-                <input pInputText type="text" class="form-control" placeholder="DDD" formControlName="ddd" />
+                <input pInputText type="text" pKeyFilter="int" class="form-control" placeholder="DDD" formControlName="ddd" />
             </div>
             <div class="ui-g-3 ui-fluid">
                 <label>Telefone</label>
-                <input pInputText type="text" class="form-control" placeholder="Número" formControlName="numero" />
+                <input pInputText type="text" pKeyFilter="int" class="form-control" placeholder="Número"
+                    formControlName="numero" />
             </div>
             <div class="ui-g-2 ui-fluid">
                 &nbsp;

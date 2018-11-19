@@ -62,9 +62,6 @@ export class CadastroPessoasComponent implements OnInit {
   salvar() {
     const pessoa: Pessoa = this.pessoaCadForm.value;
     pessoa.telefones = this.pessoaSelecionada.telefones;
-    console.log(this.pessoaSelecionada);
-    pessoa.dataNascimento = this.getDateNascimentoFromComponent();
-    console.log(pessoa);
     return this.pessoaService.salvar(pessoa)
       .subscribe(pessoaSalva => {
         this.router.navigate(['/pessoa']);
@@ -75,8 +72,8 @@ export class CadastroPessoasComponent implements OnInit {
   atualizar() {
     const pessoa: Pessoa = this.pessoaCadForm.value;
     pessoa.telefones = this.pessoaSelecionada.telefones;
+    console.log(pessoa);
     pessoa.id = this.pessoaSelecionada.id;
-    pessoa.dataNascimento = this.getDateNascimentoFromComponent();
     console.log(pessoa);
     this.pessoaService.atualizar(pessoa)
       .subscribe((pessoaAtualizada) => {
@@ -109,14 +106,11 @@ export class CadastroPessoasComponent implements OnInit {
     this.pessoaService.pesquisarPorId(id)
       .subscribe((p) => {
         const data = new Date(p.dataNascimento);
+        console.log(data);
         this.pessoaCadForm.get('nome').setValue(p.nome);
         this.pessoaCadForm.get('cpf').setValue(p.cpf);
         this.pessoaCadForm.get('email').setValue(p.email);
-        this.pessoaCadForm.get('dataNascimento').setValue(new Date(
-          data.getFullYear(),
-          data.getMonth(),
-          data.getDay())
-        );
+        this.pessoaCadForm.get('dataNascimento').setValue(data);
         if (!this.pessoaSelecionada) {
           this.pessoaSelecionada = new Pessoa();
         }
@@ -124,13 +118,6 @@ export class CadastroPessoasComponent implements OnInit {
         this.telefones = p.telefones;
         this.pessoaSelecionada.id = p.id;
       });
-  }
-
-  private getDateNascimentoFromComponent(): Date {
-    const ano: number = this.pessoaCadForm.get('dataNascimento').value.year;
-    const mes: number = this.pessoaCadForm.get('dataNascimento').value.month;
-    const dia: number = this.pessoaCadForm.get('dataNascimento').value.day;
-    return new Date(ano, mes, dia);
   }
 
 }

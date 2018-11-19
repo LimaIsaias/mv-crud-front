@@ -8,6 +8,8 @@ import { ButtonModule } from 'primeng/components/button/button';
 import { TableModule } from 'primeng/components/table/table';
 import { CadastroPessoasComponent } from './cadastro-pessoas/cadastro-pessoas.component';
 import { CalendarModule } from 'primeng/calendar';
+import {KeyFilterModule} from 'primeng/keyfilter';
+
 
 
 @NgModule({
@@ -22,7 +24,8 @@ import { CalendarModule } from 'primeng/calendar';
     InputTextModule,
     FormsModule,
     ReactiveFormsModule,
-    TableModule
+    TableModule,
+    KeyFilterModule,
   ],
   declarations: [ListagemPessoasComponent, CadastroPessoasComponent]
 })
